@@ -1,8 +1,5 @@
 - name: Code Coverage
 
-# - name: Coveralls GitHub Action
-#   uses: coverallsapp/github-action@1.1.3
-
 on:
   push:
     branches:
@@ -10,7 +7,7 @@ on:
     paths-ignore:
     - 'docs/**'
     - '.github/workflows/**'
-    - '!.github/workflows/test_32.yml'
+    - '!.github/workflows/code_coverage.yml'
   pull_request:
 
 jobs:
