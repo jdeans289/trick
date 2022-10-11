@@ -10,7 +10,7 @@ on:
     paths-ignore:
     - 'docs/**'
     - '.github/workflows/**'
-    - '!.github/workflows/test_32.yml'
+    - '!.github/workflows/code_coverage.yml'
   pull_request:
 
 jobs:
