@@ -307,6 +307,9 @@ sim_test:
 pytest:
 	make -C share/trick/pymods/trick
 
+code-coverage:
+	lcov --capture --directory trick_source/sim_services --output-file coverage.info
+	lcov --list coverage.info
 
 #requirements:
 #	@ $(MAKE) -C trick_test/requirements_docs install
