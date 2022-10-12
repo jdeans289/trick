@@ -18,7 +18,7 @@
 <img src="https://coveralls.io/repos/github/jdeans289/trick/badge.svg?branch=master" alt="Coverage Status" height=30px>
 </a>
 <a href="https://codecov.io/gh/jdeans289/trick" > 
- <img src="https://codecov.io/gh/jdeans289/trick/branch/master/graph/badge.svg?token=LKZV6SRP8G"/> 
+ <img src="https://codecov.io/gh/jdeans289/trick/branch/master/graph/badge.svg?token=LKZV6SRP8G" height=30px> 
  </a>
 </p>
 <p align=justify>
