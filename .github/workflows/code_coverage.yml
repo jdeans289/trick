@@ -52,6 +52,15 @@ jobs:
           make
     - name: Generate Code Coverage
       run: |
+        export MAKEFLAGS=-j`nproc`
+        export CFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export CXXFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export LDFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export TRICK_CFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export TRICK_CXXFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export TRICK_SYSTEM_LDFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export TRICK_SYSTEM_CFLAGS="-fprofile-arcs -ftest-coverage -O0"
+        export TRICK_SYSTEM_CXXFLAGS="-fprofile-arcs -ftest-coverage -O0"
         make code-coverage
     - name: Coveralls
       run: |
