@@ -52,7 +52,7 @@ SIMS_TO_COMPILE_AND_RUN = \
 EXECUTABLES = $(addsuffix /T_main_${TRICK_HOST_CPU}_test.exe, $(SIMS_TO_COMPILE_AND_RUN) $(SIMS_TO_COMPILE_ONLY))
 UNIT_TEST_RESULTS = $(addprefix $(TRICK_HOME)/trick_test/, $(addsuffix .xml, $(SIMS_TO_COMPILE_AND_RUN)))
 
-test: $(EXECUTABLES) $(UNIT_TEST_RESULTS) data_record_results
+test: $(EXECUTABLES) data_record_results
 
 clean:
 	rm -f $(UNIT_TEST_RESULTS)
