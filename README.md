@@ -4,24 +4,16 @@
 </a>
 </p>
 
-<p align=left>
+<p>
 <a href="https://github.com/nasa/trick/actions?query=workflow%3ALinux">
 <img src="https://github.com/nasa/trick/workflows/Linux/badge.svg?branch=master" alt="Linux" height=30px>
 </a>
-</p>
-
-<p align=left>
 <a href="https://github.com/nasa/trick/actions?query=workflow%3AmacOS">
 <img src="https://github.com/nasa/trick/workflows/macOS/badge.svg?branch=master" alt="macOS" height=30px>
 </a>
-</p>
-
-<p align=left>
 <a href="https://github.com/nasa/trick/actions?query=workflow%3A32-bit">
 <img src="https://github.com/nasa/trick/workflows/32-bit/badge.svg?branch=master" alt="macOS" height=30px>
 </a>
-</p>
-<p align=left>
 <a href="https://coveralls.io/github/jdeans289/trick?branch=master">
 <img src="https://coveralls.io/repos/github/jdeans289/trick/badge.svg?branch=master" alt="Coverage Status" height=30px>
 </a>
