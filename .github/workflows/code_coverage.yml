@@ -67,3 +67,9 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: "./coverage.info"
+    - name: CodeCov
+      run: |
+        export CODECOV_TOKEN=016943ce-b139-45f0-92aa-6ac3e5772603
+        curl -Os https://uploader.codecov.io/latest/linux/codecov
+        chmod +x codecov
+        ./codecov -t ${CODECOV_TOKEN}
