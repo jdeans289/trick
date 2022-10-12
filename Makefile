@@ -309,7 +309,8 @@ pytest:
 
 code-coverage: test
 	lcov --capture --directory trick_source/sim_services --output-file coverage_large.info
-	lcov --remove coverage_large.info '/Library/*' '/usr/*' -o coverage.info
+	lcov --remove coverage_large.info '/Library/*' '/usr/*' '*/io_src/*' '*/test/*' -o coverage.info
+	rm coverage_large.info
 	lcov --list coverage.info
 
 #requirements:
