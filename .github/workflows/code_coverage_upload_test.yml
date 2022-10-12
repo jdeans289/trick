@@ -17,8 +17,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
+    - name: Debug
+      run: |
+           pwd
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: "./coverage.info"
+        path-to-lcov: "/trick/coverage.info"
