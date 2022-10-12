@@ -63,5 +63,7 @@ jobs:
         export TRICK_SYSTEM_CXXFLAGS="-fprofile-arcs -ftest-coverage -O0"
         make code-coverage
     - name: Coveralls
-      run: |
-        echo TODO
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: "./coverage.info"
