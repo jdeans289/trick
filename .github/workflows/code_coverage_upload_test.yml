@@ -1,0 +1,24 @@
+name: CodeCoverage
+
+on:
+  push:
+    branches:
+      - '**'
+    paths-ignore:
+    - 'docs/**'
+    - '.github/workflows/**'
+    - '!.github/workflows/code_coverage_upload_test.yml'
+  pull_request:
+
+jobs:
+  code-coverage:
+    runs-on: ubuntu-latest
+    container: docker://oraclelinux:8
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@master
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: "./coverage.info"
