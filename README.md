@@ -1,7 +1,8 @@
 <p align=center>
-<a href="https://nasa.github.io/trick">
-<img src="https://raw.github.com/nasa/Trick/master/TrickLogo.png" alt="Trick Logo" height=150px>
-</a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.github.com/jdeans289/Trick/master/TrickLogo_darkmode.png">
+  <img alt="Trick logo" src="https://raw.github.com/nasa/Trick/master/TrickLogo.png" height=150px>
+</picture>
 </p>
 
 <p>
@@ -17,9 +18,6 @@
 <a href="https://coveralls.io/github/jdeans289/trick?branch=master">
 <img src="https://coveralls.io/repos/github/jdeans289/trick/badge.svg?branch=master" alt="Coverage Status" height=30px>
 </a>
-<a href="https://codecov.io/gh/jdeans289/trick" > 
- <img src="https://codecov.io/gh/jdeans289/trick/branch/master/graph/badge.svg?token=LKZV6SRP8G" height=30px> 
- </a>
 </p>
 <p align=justify>
 The Trick Simulation Environment, developed at the NASA Johnson Space Center, is a powerful simulation development framework that enables users to build applications for all phases of space vehicle development. Trick expedites the creation of simulations for early vehicle design, performance evaluation, flight software development, flight vehicle dynamic load analysis, and virtual/hardware in the loop training. Trick's purpose is to provide a common set of simulation capabilities that allow users to concentrate on their domain specific models, rather than simulation-specific functions like job ordering, input file processing, or data recording.
