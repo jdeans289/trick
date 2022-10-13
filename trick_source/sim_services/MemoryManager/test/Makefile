@@ -59,27 +59,28 @@ TESTS = MM_creation_unittest \
 
 all : test
 
-test: $(TESTS)
-	./MM_creation_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_creation.xml
-	./MM_declare_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_var.xml
-	./MM_declare_var_2_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_var_2.xml
-	./MM_declare_extern_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_extern_var.xml
-	./MM_delete_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_delete_var.xml
-	./MM_ref_attributes_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_ref_attributes.xml
-	./MM_resize_array_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_resize_array.xml
-	./MM_strdup_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_strdup.xml
-	./MM_write_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_var.xml
-	./MM_sizeof_type_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_sizeof_type.xml
-	./MM_read_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_read_checkpoint_from_string.xml
-	./MM_clear_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_clear_var.xml
-	./MM_alloc_deps --gtest_output=xml:${TRICK_HOME}/trick_test/MM_alloc_deps.xml
-	./MM_write_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_checkpoint.xml
-	./MM_write_checkpoint_hexfloat --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_checkpoint_hexfloat.xml
-	./MM_get_enumerated --gtest_output=xml:${TRICK_HOME}/trick_test/MM_get_enumerated.xml
-	./MM_ref_name_from_address --gtest_output=xml:${TRICK_HOME}/trick_test/MM_ref_name_from_address.xml
-	./Bitfield_tests --gtest_output=xml:${TRICK_HOME}/trick_test/Bitfield_tests.xml
-	./MM_stl_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_stl_checkpoint.xml
-	./MM_stl_restore --gtest_output=xml:${TRICK_HOME}/trick_test/MM_stl_restore.xml
+test: 
+# $(TESTS)
+# 	./MM_creation_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_creation.xml
+# 	./MM_declare_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_var.xml
+# 	./MM_declare_var_2_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_var_2.xml
+# 	./MM_declare_extern_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_declare_extern_var.xml
+# 	./MM_delete_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_delete_var.xml
+# 	./MM_ref_attributes_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_ref_attributes.xml
+# 	./MM_resize_array_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_resize_array.xml
+# 	./MM_strdup_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_strdup.xml
+# 	./MM_write_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_var.xml
+# 	./MM_sizeof_type_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_sizeof_type.xml
+# 	./MM_read_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_read_checkpoint_from_string.xml
+# 	./MM_clear_var_unittest --gtest_output=xml:${TRICK_HOME}/trick_test/MM_clear_var.xml
+# 	./MM_alloc_deps --gtest_output=xml:${TRICK_HOME}/trick_test/MM_alloc_deps.xml
+# 	./MM_write_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_checkpoint.xml
+# 	./MM_write_checkpoint_hexfloat --gtest_output=xml:${TRICK_HOME}/trick_test/MM_write_checkpoint_hexfloat.xml
+# 	./MM_get_enumerated --gtest_output=xml:${TRICK_HOME}/trick_test/MM_get_enumerated.xml
+# 	./MM_ref_name_from_address --gtest_output=xml:${TRICK_HOME}/trick_test/MM_ref_name_from_address.xml
+# 	./Bitfield_tests --gtest_output=xml:${TRICK_HOME}/trick_test/Bitfield_tests.xml
+# 	./MM_stl_checkpoint --gtest_output=xml:${TRICK_HOME}/trick_test/MM_stl_checkpoint.xml
+# 	./MM_stl_restore --gtest_output=xml:${TRICK_HOME}/trick_test/MM_stl_restore.xml
 
 
 code-coverage: test
