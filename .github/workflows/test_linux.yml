@@ -67,6 +67,7 @@ jobs:
               default-jdk
               python2.7-dev
               python3-dev
+              python3-pip
               python3-venv
             install_gtest: |
               apt-get install -y libgtest-dev
