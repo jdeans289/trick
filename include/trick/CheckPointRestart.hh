@@ -200,7 +200,7 @@ namespace Trick {
              @param in_time - desired checkpoint time in seconds.
              @return always 0
              */
-            virtual int checkpoint(double in_time, std::string file_name="") ;
+            virtual int checkpoint(double in_time) ;
 
             /**
              * Executes the pre_init_checkpoint
