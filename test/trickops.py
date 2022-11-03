@@ -36,4 +36,4 @@ class ExampleWorkflow(TrickWorkflow):
         self.sims[i].build_cmd = cmd
 
 if __name__ == "__main__":
-    sys.exit(ExampleWorkflow(quiet=False, trick_top_level=sys.argv[1]).run())
+    sys.exit(ExampleWorkflow(quiet=True, trick_top_level=sys.argv[1]).run())
