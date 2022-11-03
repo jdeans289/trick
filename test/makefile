@@ -87,5 +87,4 @@ endif
 
 # Use trickops to run, record, and 
 checkpoint_data_record:
-	$(PYTHON) -m pip install -r $(TRICK_HOME)/share/trick/trickops/requirements.txt
-	$(PYTHON) trickops.py $(TRICK_HOME)
+	python3 trickops.py $(TRICK_HOME)
