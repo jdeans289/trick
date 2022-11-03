@@ -109,7 +109,7 @@ int Trick::CheckPointRestart::find_write_checkpoint_jobs(std::string sim_object_
     return(0) ;
 }
 
-int Trick::CheckPointRestart::checkpoint(double in_time) {
+int Trick::CheckPointRestart::checkpoint(double in_time, std::string file_name="") {
 
     long long curr_time = exec_get_time_tics() ;
     long long new_time ;
