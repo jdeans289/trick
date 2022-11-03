@@ -19,13 +19,13 @@ class ExampleWorkflow(TrickWorkflow):
       run_jobs        = self.get_jobs(kind='run')
       analysis_jobs   = self.get_jobs(kind='analyze')
     
-      builds_status = self.execute_jobs(build_jobs, max_concurrent=3, header='Executing all sim builds.')
+      builds_status = self.execute_jobs(build_jobs, max_concurrent=1, header='Executing all sim builds.')
       if builds_status:
         return builds_status
 
-      runs_status   = self.execute_jobs(run_jobs,   max_concurrent=3, header='Executing all sim runs.')
+      runs_status   = self.execute_jobs(run_jobs,   max_concurrent=1, header='Executing all sim runs.')
       comparison_result = self.compare()
-      analysis_status = self.execute_jobs(analysis_jobs, max_concurrent=3, header='Executing all analysis.')
+      analysis_status = self.execute_jobs(analysis_jobs, max_concurrent=1, header='Executing all analysis.')
 
       self.report()           # Print Verbose report
       self.status_summary()   # Print a Succinct summary
