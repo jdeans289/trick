@@ -1,5 +1,6 @@
 <p align=center>
 <picture>
+  <a href="https://nasa.github.io/trick">
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.github.com/nasa/Trick/master/TrickLogo_darkmode.png">
   <img alt="Trick logo" src="https://raw.github.com/nasa/Trick/master/TrickLogo.png" height=150px>
 </picture>
@@ -61,6 +62,26 @@ The Trick Simulation Environment, developed at the NASA Johnson Space Center, is
             <td>View some of the many projects that use Trick.</td>
             <td>Read some of the most frequently asked questions pertaining to Trick.</td>
             <td>See a collection of how-to guides detailing common Trick processes.</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <col width="33%">
+    <col width="33%">
+    <col width="33%">
+    <thead>
+        <tr>
+            <th></th>
+            <th><a href="https://nasa.github.io/trick/developer_docs/Developer-Docs-Home"> Developer Docs </a></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr align="center">
+            <td></td>
+            <td>Read detailed documentation for various Trick internals and processes.</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
