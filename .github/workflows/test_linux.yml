@@ -142,10 +142,6 @@ jobs:
           export MAKEFLAGS=-j`nproc`
           export PYTHON_VERSION=${{matrix.python}}
           ./configure
-      - name: Build Trick
-        run: |
-          export MAKEFLAGS=-j`nproc`
-          make
       - name: Test
         run: |
           cd share/trick/trickops/
