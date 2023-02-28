@@ -1,0 +1,6 @@
+int socket(int, int, int);
+int setsockopt(int, int, int, const void *, socklen_t);
+int bind(int, const struct sockaddr *,socklen_t);
+int getsockname(int, struct sockaddr *, socklen_t *);
+int listen(int, int);
+int select(int, fd_set *, fd_set *, fd_set *, struct timeval *);

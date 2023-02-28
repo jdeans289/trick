@@ -13,3 +13,9 @@ TRICK_CXXFLAGS += -std=c++11
 
 # make the comm library when called by the master makefile.
 trick: ${TRICK_LIB}
+
+test: ${LIBDIR}/${LIBNAME} 
+	${MAKE} -C test
+
+clean_test:
+	${MAKE} -C clean

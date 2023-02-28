@@ -1,9 +1,10 @@
 #ifndef CLIENT_LISTENER_HH
 #define CLIENT_LISTENER_HH
 
-#include "trick/tc.h"
-#include "trick/TCConnection.hh"
 #include <string>
+
+#define LISTENER_ERROR -1
+
 
 namespace Trick {
     
@@ -11,6 +12,8 @@ namespace Trick {
 
     class ClientListener {
         public:
+            friend class TCConnection;
+
             ClientListener ();
             ~ClientListener ();
 
@@ -18,11 +21,11 @@ namespace Trick {
             int initialize(std::string hostname, int port);
             int initialize();
 
-            int setBlockMode(TCCommBlocking mode);
+            // int set_block_mode(TCCommBlocking mode);
 
             bool checkForNewConnections();
 
-            const char * getHostname ();
+            std::string getHostname ();
 
             int getPort();
 
@@ -33,14 +36,15 @@ namespace Trick {
             bool validateSourceAddress(std::string source_address);
 
             bool isInitialized(); 
-
-            friend int accept(ClientListener* listener, TCConnection* connection);
-
+            
         private:
-            TCDevice _listen_dev;
-            std::string saved_source;
-            int port;
-            bool initialized;
+        
+            int _listen_socket;
+            std::string _hostname;
+            int _port;
+            std::string _client_tag;
+
+            bool _initialized;
     };
 }
 

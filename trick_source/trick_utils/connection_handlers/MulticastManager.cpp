@@ -2,6 +2,9 @@
 #include <string.h>
 #include <vector>
 
+#include <iostream>
+
+
 Trick::MulticastManager::MulticastManager() {
 }
 
@@ -17,12 +20,19 @@ int Trick::MulticastManager::restart () {
 
 int Trick::MulticastManager::broadcast (std::string message) {
     if (!is_initialized()) {
-        initialize();
+        return -1;
     }
+
     const char * message_send = message.c_str();
+    int status = 0;
     for (struct sockaddr_in& address : addresses) {
-        sendto(mcast_socket , message_send , strlen(message_send) , 0 , (struct sockaddr *)&address , (socklen_t)sizeof(address)) ;
+        if (sendto(mcast_socket , message_send , strlen(message_send) , 0 , (struct sockaddr *)&address , (socklen_t)sizeof(address)) == -1) {
+            perror("Multicast sendto failed");
+            status = -1;
+        }
     }
+
+    return status;
 }
 
 int Trick::MulticastManager::addAddress (std::string addr, int port) {
