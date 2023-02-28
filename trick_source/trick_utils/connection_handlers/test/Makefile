@@ -35,5 +35,5 @@ clean_test :
 include syscall_mock_linkflags.mk
 
 $(TESTS) : $(CPP_OBJS) $(DEPENDS)
-	$(TRICK_CXX) $(TRICK_CXXFLAGS)  $^  $(TRICK_EXEC_LINK_LIBS) -o $@
+	$(TRICK_CXX) $(TRICK_CXXFLAGS)  $^  $(TRICK_EXEC_LINK_LIBS) -o $@ $(SYSCALL_MOCK_LINKFLAGS)
 
