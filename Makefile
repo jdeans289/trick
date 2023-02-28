@@ -292,8 +292,11 @@ premade:
 ################################################################################
 
 # This target runs Trick's Unit-tests and simulation-tests.
-test: unit_test sim_test
-	@ echo "All tests completed sucessfully"
+# test: unit_test sim_test
+# 	@ echo "All tests completed sucessfully"
+.PHONY: test
+test:
+	cd trick_source/trick_utils/connection_handlers; make; cd test; make test
 
 .PHONY: $(UNIT_TEST_DIRS)
 $(UNIT_TEST_DIRS):

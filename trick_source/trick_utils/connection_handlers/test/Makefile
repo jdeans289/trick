@@ -13,8 +13,7 @@ TRICK_CXXFLAGS += ${INCLUDE_DIRS} -g -Wall -Wextra ${TRICK_SYSTEM_CXXFLAGS} ${TR
 TESTS = comm_test
 
 # Objects that we depend on
-DEPENDS = ../object_*/* \
-		  SyscallMock.hh
+DEPENDS = ../object_*/* 
 
 TRICK_CXXFLAGS += -Wno-unused-parameter
 
@@ -36,5 +35,5 @@ clean_test :
 include syscall_mock_linkflags.mk
 
 $(TESTS) : $(CPP_OBJS) $(DEPENDS)
-	$(TRICK_CXX) $(TRICK_CXXFLAGS) -Wno-unused-parameter -o $@ $^  $(TRICK_EXEC_LINK_LIBS) $(SYSCALL_MOCK_LINKFLAGS) 
+	$(TRICK_CXX) $(TRICK_CXXFLAGS)  $^  $(TRICK_EXEC_LINK_LIBS) -o $@
 
