@@ -142,10 +142,15 @@ void * Trick::VariableServerListenThread::thread_body() {
 
     while (1) {
 
+
         // Look for a new client requesting a connection
         if (listener.checkForNewConnections()) {
             // pause here during restart
             pthread_mutex_lock(&restart_pause) ;
+
+            // Recheck to make sure it wasn't a false positive
+            if (!listener.checkForNewConnections())
+                continue;
 
             // Create a new thread to service this connection
             VariableServerThread * vst = new Trick::VariableServerThread() ;
@@ -159,7 +164,6 @@ void * Trick::VariableServerListenThread::thread_body() {
                 delete vst;
             }
 
-            pthread_mutex_unlock(&restart_pause) ;
         } else if ( broadcast ) {
             // Otherwise, broadcast on the multicast channel if enabled
             char buf1[1024];
@@ -175,6 +179,9 @@ void * Trick::VariableServerListenThread::thread_body() {
             }
             multicast.broadcast(message);
         }
+
+        pthread_mutex_unlock(&restart_pause) ;
+
     }
 
     return NULL ;
