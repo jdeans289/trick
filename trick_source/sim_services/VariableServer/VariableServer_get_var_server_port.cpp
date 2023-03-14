@@ -15,12 +15,14 @@ int Trick::VariableServer::create_tcp_socket(const char * address, unsigned shor
 
 int Trick::VariableServer::create_udp_socket(const char * address, unsigned short in_port ) {
     // UDP sockets are created without a listen thread
+
     int ret ;
     Trick::VariableServerThread * vst ;
     vst = new Trick::VariableServerThread() ;
     ret = vst->open_udp_socket(address, in_port) ;
     if ( ret == 0 ) {
         vst->copy_cpus(listen_thread.get_cpus()) ;
+        std::cout << "Creating a new UDP VS thread" << std::endl;
         vst->create_thread() ;
     } else {
         delete vst;

@@ -28,13 +28,16 @@ void * Trick::VariableServerThread::thread_body() {
     vs->add_vst( pthread_self() , this ) ;
 
     // Accept client connection
+    std::cout << "About to start client connection" << std::endl;
     int status = connection->start();
+    std::cout << "Started client connection" << std::endl;
 
     if (status != 0) {
+        std::cout << "!!!!!!!!!!!! Got a failed connection, shutting down !!!!!!!!!!!!!!!!!!!!!" << std::endl;
+
         // TODO: Use a real error handler
         vs->delete_vst(pthread_self());
 
-        std::cout << "!!!!!!!!!!!! Got a failed connection, shutting down !!!!!!!!!!!!!!!!!!!!!" << std::endl;
 
         // Tell main thread that we failed to initialize
         pthread_mutex_lock(&connection_status_mutex);
