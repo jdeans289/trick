@@ -152,7 +152,12 @@ void * Trick::VariableServerListenThread::thread_body() {
             vst->open_tcp_socket(&listener) ;
             vst->copy_cpus(get_cpus()) ;
             vst->create_thread() ;
-            vst->wait_for_accept() ;
+            ConnectionStatus status = vst->wait_for_accept() ;
+
+            if (status == CONNECTION_FAIL) {
+                std::cout << "Deleting failed connection" << std::endl;
+                delete vst;
+            }
 
             pthread_mutex_unlock(&restart_pause) ;
         } else if ( broadcast ) {

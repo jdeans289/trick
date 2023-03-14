@@ -22,6 +22,8 @@ int Trick::VariableServer::create_udp_socket(const char * address, unsigned shor
     if ( ret == 0 ) {
         vst->copy_cpus(listen_thread.get_cpus()) ;
         vst->create_thread() ;
+    } else {
+        delete vst;
     }
     //vst->var_debug(3) ;
 

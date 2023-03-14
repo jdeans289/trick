@@ -34,13 +34,14 @@ void * Trick::VariableServerThread::thread_body() {
         // TODO: Use a real error handler
         vs->delete_vst(pthread_self());
 
+        std::cout << "!!!!!!!!!!!! Got a failed connection, shutting down !!!!!!!!!!!!!!!!!!!!!" << std::endl;
+
         // Tell main thread that we failed to initialize
         pthread_mutex_lock(&connection_status_mutex);
         connection_status = CONNECTION_FAIL;
         pthread_cond_signal(&connection_status_cv);
         pthread_mutex_unlock(&connection_status_mutex);
-
-        delete (this);
+        
         pthread_exit(NULL);
     }
 
