@@ -189,111 +189,111 @@
 #   runs:
 #     RUN_test/unit_test.py:
 #       returns: 0
-SIM_earlyterm:
-  path: test/SIM_earlyterm
-  build_args: "-t"
-  binary: "T_main_{cpu}_test.exe"
-  runs:
-    RUN_test/input.py:
-      returns: 0
-SIM_job_class_order:
-  path: test/SIM_job_class_order
-  build_args: "-t"
-  binary: "T_main_{cpu}_test.exe"
-  runs:
-    RUN_test/input.py:
-      returns: 0
-
-# Special cases
-
-# setup.py dumps a checkpoint
-# unit_test.py loads that checkpoint and verifies the data
-SIM_stls:
-  path: test/SIM_stls
-  build_args: "-t"
-  binary: "T_main_{cpu}_test.exe"
-  runs:
-    RUN_test/setup.py:
-      phase: -1
-      returns: 0
-    RUN_test/unit_test.py:
-      returns: 0
-
-SIM_test_dr:
-  path: test/SIM_test_dr
-  build_args: "-t"
-  binary: "T_main_{cpu}_test.exe"
-  runs:
-    RUN_test/unit_test.py:
-      returns: 0
-      compare:
-      - test/SIM_test_dr/RUN_test/log_DR_bitfieldsASCII.csv vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_bitfieldsASCII_Master.csv
-      - test/SIM_test_dr/RUN_test/log_DR_typesASCII.csv vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_typesASCII_Master.csv
-      - test/SIM_test_dr/RUN_test/log_DR_bitfieldsBINARY.trk vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_bitfieldsBINARY.trk
-
-# All the dump.py runs dump a checkpoint
-# All the unit_test.py runs load that checkpoint and then compare against expected logs
-# SIM_checkpoint_data_recording:
-#   path: test/SIM_checkpoint_data_recording
+# SIM_earlyterm:
+#   path: test/SIM_earlyterm
 #   build_args: "-t"
 #   binary: "T_main_{cpu}_test.exe"
 #   runs:
-#     RUN_test[1-5]/dump.py:
+#     RUN_test/input.py:
+#       returns: 0
+# SIM_job_class_order:
+#   path: test/SIM_job_class_order
+#   build_args: "-t"
+#   binary: "T_main_{cpu}_test.exe"
+#   runs:
+#     RUN_test/input.py:
+#       returns: 0
+
+# # Special cases
+
+# # setup.py dumps a checkpoint
+# # unit_test.py loads that checkpoint and verifies the data
+# SIM_stls:
+#   path: test/SIM_stls
+#   build_args: "-t"
+#   binary: "T_main_{cpu}_test.exe"
+#   runs:
+#     RUN_test/setup.py:
 #       phase: -1
 #       returns: 0
-#     RUN_test6/dump.py:
+#     RUN_test/unit_test.py:
 #       returns: 0
 
-#     # Note we could use the [1-5] notation here if RUN_test2 didn't stand out as not matching the pattern -Jordan 1/2023
-#     RUN_test1/unit_test.py:
+# SIM_test_dr:
+#   path: test/SIM_test_dr
+#   build_args: "-t"
+#   binary: "T_main_{cpu}_test.exe"
+#   runs:
+#     RUN_test/unit_test.py:
 #       returns: 0
 #       compare:
-#         - test/SIM_checkpoint_data_recording/RUN_test1/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test1/log_foo.csv
-#     RUN_test2/unit_test.py:
-#       returns: 0
-#       analyze: './test/SIM_checkpoint_data_recording/RUN_test2/check_log.sh'
-#     RUN_test3/unit_test.py:
-#       returns: 0
-#       compare:
-#         - test/SIM_checkpoint_data_recording/RUN_test3/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test3/log_foo.csv
-#     RUN_test4/unit_test.py:
-#       returns: 0
-#       compare:
-#         - test/SIM_checkpoint_data_recording/RUN_test4/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test4/log_foo.csv
-#     RUN_test5/unit_test.py:
-#       returns: 0
-#       compare:
-#         - test/SIM_checkpoint_data_recording/RUN_test5/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test5/log_foo.csv
-#     RUN_test6/unit_test.py:
-#       returns: 0
-#       compare: 
-#         - test/SIM_checkpoint_data_recording/RUN_test6/ref_log_foo2.csv vs. test/SIM_checkpoint_data_recording/RUN_test6/log_foo2.csv
+#       - test/SIM_test_dr/RUN_test/log_DR_bitfieldsASCII.csv vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_bitfieldsASCII_Master.csv
+#       - test/SIM_test_dr/RUN_test/log_DR_typesASCII.csv vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_typesASCII_Master.csv
+#       - test/SIM_test_dr/RUN_test/log_DR_bitfieldsBINARY.trk vs. test/SIM_test_dr/RUN_test/Ref_Logs/log_DR_bitfieldsBINARY.trk
 
-SIM_events:
-  path: test/SIM_events
+# All the dump.py runs dump a checkpoint
+# All the unit_test.py runs load that checkpoint and then compare against expected logs
+SIM_checkpoint_data_recording:
+  path: test/SIM_checkpoint_data_recording
   build_args: "-t"
   binary: "T_main_{cpu}_test.exe"
   runs:
-    RUN_test/unit_test.py:
-      returns: 0 
-    RUN_test/unit_test_error1.py:
-      returns: 255
-    RUN_test/unit_test_error2.py:
-      returns: 255
-    RUN_test/unit_test_error3.py:
-      returns: 255
-
-
-# The variable server client and SIM_amoeba sometimes fail to connect and need to be retried
-SIM_test_varserv:
-  path: test/SIM_test_varserv
-  build_args: "-t"
-  binary: "T_main_{cpu}_test.exe"
-  labels:
-    - retries_allowed
-  runs:
-    RUN_test/unit_test.py:
+    RUN_test[1-5]/dump.py:
+      phase: -1
       returns: 0
+    RUN_test6/dump.py:
+      returns: 0
+
+    # Note we could use the [1-5] notation here if RUN_test2 didn't stand out as not matching the pattern -Jordan 1/2023
+    RUN_test1/unit_test.py:
+      returns: 0
+      compare:
+        - test/SIM_checkpoint_data_recording/RUN_test1/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test1/log_foo.csv
+    RUN_test2/unit_test.py:
+      returns: 0
+      analyze: './test/SIM_checkpoint_data_recording/RUN_test2/check_log.sh'
+    RUN_test3/unit_test.py:
+      returns: 0
+      compare:
+        - test/SIM_checkpoint_data_recording/RUN_test3/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test3/log_foo.csv
+    RUN_test4/unit_test.py:
+      returns: 0
+      compare:
+        - test/SIM_checkpoint_data_recording/RUN_test4/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test4/log_foo.csv
+    RUN_test5/unit_test.py:
+      returns: 0
+      compare:
+        - test/SIM_checkpoint_data_recording/RUN_test5/ref_log_foo.csv vs. test/SIM_checkpoint_data_recording/RUN_test5/log_foo.csv
+    RUN_test6/unit_test.py:
+      returns: 0
+      compare: 
+        - test/SIM_checkpoint_data_recording/RUN_test6/ref_log_foo2.csv vs. test/SIM_checkpoint_data_recording/RUN_test6/log_foo2.csv
+
+# SIM_events:
+#   path: test/SIM_events
+#   build_args: "-t"
+#   binary: "T_main_{cpu}_test.exe"
+#   runs:
+#     RUN_test/unit_test.py:
+#       returns: 0 
+#     RUN_test/unit_test_error1.py:
+#       returns: 255
+#     RUN_test/unit_test_error2.py:
+#       returns: 255
+#     RUN_test/unit_test_error3.py:
+#       returns: 255
+
+
+# # The variable server client and SIM_amoeba sometimes fail to connect and need to be retried
+# SIM_test_varserv:
+#   path: test/SIM_test_varserv
+#   build_args: "-t"
+#   binary: "T_main_{cpu}_test.exe"
+#   labels:
+#     - retries_allowed
+#   runs:
+#     RUN_test/unit_test.py:
+#       returns: 0
 SIM_amoeba:
   path: trick_sims/Cannon/SIM_amoeba
   build_args: "-t"

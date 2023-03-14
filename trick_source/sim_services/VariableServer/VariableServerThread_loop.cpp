@@ -31,7 +31,7 @@ void * Trick::VariableServerThread::thread_body() {
     std::cout << "About to start client connection" << std::endl;
     int status = connection->start();
     std::cout << "Started client connection" << std::endl;
-
+    
     if (status != 0) {
         std::cout << "!!!!!!!!!!!! Got a failed connection, shutting down !!!!!!!!!!!!!!!!!!!!!" << std::endl;
 
@@ -47,6 +47,8 @@ void * Trick::VariableServerThread::thread_body() {
         
         pthread_exit(NULL);
     }
+
+    std::cout << "Actually starting VS thread" << std::endl;
 
     // Create session
     session = new VariableServerSession(connection);
@@ -69,12 +71,14 @@ void * Trick::VariableServerThread::thread_body() {
 
     try {
         while (1) {
+            std::cout << "Top of loop" << std::endl;
             // Pause here if we are in a restart condition
             pthread_mutex_lock(&restart_pause) ;
-
+            std::cout << "Got lock" << std::endl;
             // Look for a message from the client
             // Parse and execute if one is availible
             session->handleMessage();
+            std::cout << "Finished message" << std::endl;
 
             // Check to see if exit is necessary
             if (session->exit_cmd == true) {
@@ -85,6 +89,7 @@ void * Trick::VariableServerThread::thread_body() {
             if ( session->get_copy_mode() == VS_COPY_ASYNC ) {
                 session->copy_sim_data() ;
             }
+            std::cout << "Finished copy" << std::endl;
     
             bool should_write_async = (session->get_write_mode() == VS_WRITE_ASYNC) || 
                                         ( session->get_copy_mode() == VS_COPY_ASYNC && (session->get_write_mode() == VS_WRITE_WHEN_COPIED)) || 
@@ -97,7 +102,10 @@ void * Trick::VariableServerThread::thread_body() {
                     break ;
                 }
             }
+            std::cout << "Finished write" << std::endl;
+
             pthread_mutex_unlock(&restart_pause) ;
+            std::cout << "Released lock" << std::endl;
 
             usleep((unsigned int) (session->get_update_rate() * 1000000));
         }
