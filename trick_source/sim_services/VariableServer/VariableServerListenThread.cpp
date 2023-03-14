@@ -193,6 +193,8 @@ int Trick::VariableServerListenThread::restart() {
 
     int ret ;
 
+    listener.restart();
+
     if ( user_requested_address ) {
 
         if (!listener.validateSourceAddress(requested_source_address)) {

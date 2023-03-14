@@ -12,7 +12,9 @@
 #include "trick/ClientListener.hh"
 
 Trick::ClientListener::ClientListener () : ClientListener (new SystemInterface()) {}
-Trick::ClientListener::ClientListener (SystemInterface * system_interface) : _listen_socket(-1), _hostname(""), _port(0), _client_tag("<empty>"), _initialized(false), _system_interface(system_interface) {}
+Trick::ClientListener::ClientListener (SystemInterface * system_interface) : _listen_socket(-1), _hostname(""), _port(0), _client_tag("<empty>"), _initialized(false), _system_interface(system_interface) {
+    std::cout << "************* IN CLIENTLISTENER CONSTRUCTOR" << std::endl;
+}
 
 Trick::ClientListener::~ClientListener () {
     // Clean up our socket if initialized
