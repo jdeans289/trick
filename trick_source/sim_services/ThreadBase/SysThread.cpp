@@ -9,7 +9,6 @@
 #endif
 #include <signal.h>
 #include <algorithm>
-#include <time.h>
 
 #include "trick/SysThread.hh"
 
@@ -57,7 +56,9 @@ int Trick::SysThread::ensureAllShutdown() {
 
     // Join all threads
     for (SysThread * thread : all_sys_threads()) {
+        std::cout << "Waiting for " << thread->name << " to join" << std::endl;
         thread->join_thread();
+        std::cout << thread->name << " has successfully joined" << std::endl;
     }
 
     // Success!
