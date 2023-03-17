@@ -306,6 +306,7 @@ int Trick::ThreadBase::create_thread() {
 
 int Trick::ThreadBase::cancel_thread() {
     pthread_mutex_lock(&shutdown_mutex);
+    std::cout << "in cancel_thread for " << name << std::endl;
     should_shutdown = true;
     pthread_mutex_unlock(&shutdown_mutex);
 

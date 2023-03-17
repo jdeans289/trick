@@ -144,8 +144,11 @@ void * Trick::VariableServerListenThread::thread_body() {
 
     while (1) {
         // Quit here if it's time
+        std::cout << "About to test shutdown in " << name << std::endl;
         test_shutdown();
+        std::cout << "Passed shutdown test in " << name << std::endl;
 
+        std::cout << "About to check for a new connection in " << name << std::endl;
         // Look for a new client requesting a connection
         if (listener.checkForNewConnections()) {
             // pause here during restart
@@ -178,6 +181,8 @@ void * Trick::VariableServerListenThread::thread_body() {
             pthread_mutex_unlock(&restart_pause) ;
 
         } else if ( broadcast ) {
+            std::cout << "Didn't get a new connection, multicasting instead " << name << std::endl;
+
             // Otherwise, broadcast on the multicast channel if enabled
             char buf1[1024];
             snprintf(buf1 , sizeof(buf1), "%s\t%hu\t%s\t%d\t%s\t%s\t%s\t%s\t%s\t%hu\n" , listener.getHostname().c_str(), (unsigned short)listener.getPort() ,
@@ -191,7 +196,9 @@ void * Trick::VariableServerListenThread::thread_body() {
                 initializeMulticast();
             }
             multicast.broadcast(message);
-        }
+        } else {
+            std::cout << "Didn't get a new connection from " << name << std::endl;
+        }   
     }
 
     return NULL ;
