@@ -7,6 +7,7 @@
 int Trick::VariableServer::restart() {
     listen_thread.restart() ;
     if ( listen_thread.get_pthread_id() == 0 ) {
+        std::cout << "********Recreating listen thread" << std::endl;
         listen_thread.create_thread() ;
     }
     std::map < pthread_t , VariableServerListenThread * >::iterator it ;
@@ -26,6 +27,9 @@ int Trick::VariableServer::suspendPreCheckpointReload() {
     std::map<pthread_t, VariableServerThread*>::iterator pos ;
 
     listen_thread.pause_listening() ;
+    for (const auto& listen_it : additional_listen_threads) {
+        listen_it.second->pause_listening();
+    }
 
     pthread_mutex_lock(&map_mutex) ;
     for ( pos = var_server_threads.begin() ; pos != var_server_threads.end() ; pos++ ) {
@@ -50,6 +54,9 @@ int Trick::VariableServer::resumePostCheckpointReload() {
     pthread_mutex_unlock(&map_mutex) ;
 
     listen_thread.restart_listening() ;
+    for (const auto& listen_it : additional_listen_threads) {
+        listen_it.second->restart_listening();
+    }
 
     return 0;
 }

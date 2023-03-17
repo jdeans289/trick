@@ -226,7 +226,7 @@ int Trick::VariableServerListenThread::restart() {
         listener.disconnect();
         ret = listener.initialize(requested_source_address, requested_port);
         
-        if (ret != TC_SUCCESS) {
+        if (ret != 0) {
             message_publish(MSG_ERROR, "ERROR: Could not establish listen port %d for Variable Server. Aborting.\n", requested_port);
             return (-1);
         }

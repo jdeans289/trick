@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "trick/VariableServer.hh"
 
-
 int Trick::VariableServer::create_tcp_socket(const char * address, unsigned short in_port ) {
-    Trick::VariableServerListenThread * new_listen_thread = new Trick::VariableServerListenThread ;
+    Trick::VariableServerListenThread * new_listen_thread = new Trick::VariableServerListenThread ;    
+
     new_listen_thread->create_tcp_socket(address, in_port) ;
     new_listen_thread->copy_cpus(listen_thread.get_cpus()) ;
     new_listen_thread->create_thread() ;

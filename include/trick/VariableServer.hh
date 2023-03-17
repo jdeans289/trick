@@ -305,7 +305,7 @@ namespace Trick {
             pthread_mutex_t map_mutex ;     /**<  trick_io(**) */
 
             /** Map of additional listen threads created by create_tcp_socket.\n */
-            std::map < pthread_t , VariableServerListenThread * > additional_listen_threads ; /**<  trick_io(**) */
+            std::map < pthread_t , VariableServerListenThread * > additional_listen_threads ;   /**<  trick_io(**) */
 
 
     } ;
