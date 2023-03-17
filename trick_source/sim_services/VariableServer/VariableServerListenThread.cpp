@@ -169,9 +169,9 @@ void * Trick::VariableServerListenThread::thread_body() {
             if (status == CONNECTION_FAIL) {
                 // If the connection failed, the thread will exit.
                 // Make sure it joins fully before deleting the vst object
-                std::cout << "Waiting for failed connection " << vst.get_name() << " in " << name << std::endl;
+                std::cout << "Waiting for failed connection " << vst->get_name() << " in " << name << std::endl;
                 vst->join_thread();
-                std::cout << "Waiting for failed connection " << vst.get_name() << " in " << name << std::endl;
+                std::cout << "Was able to join " << vst->get_name() << " in " << name << std::endl;
                 delete vst;
             }
 
