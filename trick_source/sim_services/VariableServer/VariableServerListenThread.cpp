@@ -11,8 +11,10 @@
 
 #define MAX_MACHINE_NAME 80
 
+static int instance = 0; 
+
 Trick::VariableServerListenThread::VariableServerListenThread() :
- Trick::SysThread("VarServListen"),
+ Trick::SysThread(std::string("VarServListen" + std::to_string(instance++))),
  requested_port(0),
  user_requested_address(false),
  broadcast(true),
@@ -147,7 +149,9 @@ void * Trick::VariableServerListenThread::thread_body() {
         // Look for a new client requesting a connection
         if (listener.checkForNewConnections()) {
             // pause here during restart
+            std::cout << "Waiting for lock in " << name << std::endl;
             pthread_mutex_lock(&restart_pause) ;
+            std::cout << "Got lock in " << name << std::endl;
 
             // Recheck - sometimes we get false positive if something happens during restart
             if (!listener.checkForNewConnections()) {
@@ -165,7 +169,9 @@ void * Trick::VariableServerListenThread::thread_body() {
             if (status == CONNECTION_FAIL) {
                 // If the connection failed, the thread will exit.
                 // Make sure it joins fully before deleting the vst object
+                std::cout << "Waiting for failed connection " << vst.get_name() << " in " << name << std::endl;
                 vst->join_thread();
+                std::cout << "Waiting for failed connection " << vst.get_name() << " in " << name << std::endl;
                 delete vst;
             }
 

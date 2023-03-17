@@ -154,6 +154,7 @@ void Trick::VariableServerThread::cleanup() {
 
     if (session != NULL)
         delete session;
+
 }
 
 
