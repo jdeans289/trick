@@ -167,6 +167,9 @@ void * Trick::VariableServerListenThread::thread_body() {
             vst->open_tcp_connection(&listener) ;
             vst->copy_cpus(get_cpus()) ;
             vst->create_thread() ;
+
+            std::cout << "Waiting for accept " << vst->get_name() << " in " << name << std::endl;
+        
             ConnectionStatus status = vst->wait_for_accept() ;
 
             if (status == CONNECTION_FAIL) {
